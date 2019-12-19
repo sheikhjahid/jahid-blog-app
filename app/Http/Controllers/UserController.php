@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-
+use Auth;
 class UserController extends Controller
 {
     protected $client;

@@ -1,7 +1,9 @@
 @extends('blank')
 @section('content')
 
+<a href="{{ url('posts/add') }}"><button class="btn btn-danger">Add</button></a>
 @if(gettype($posts)=="array")
+
 @foreach($posts as $post)
 <hr>
 <div class="header">
