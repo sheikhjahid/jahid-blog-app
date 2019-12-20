@@ -14,10 +14,10 @@
   <form action="{{ url('posts/update',[$post['id']]) }}" method="POST" style="margin-bottom:20px;">
     @method('GET')
     <label for="title">Title</label>
-    <input type="text" id="title" name="title" value="{{ $post['title'] }}" placeholder="Enter title..">
+    <input class="form-group" type="text" id="title" name="title" value="{{ $post['title'] }}" placeholder="Enter title..">
 
     <label for="subject">Description</label>
-    <textarea id="body" name="body"placeholder="Write description" style="height:200px">{{ $post['body'] }}</textarea>
+    <textarea class="form-group" id="body" name="body"placeholder="Write description" style="height:200px">{{ $post['body'] }}</textarea>
 
     <input class="btn btn-primary" type="submit" value="Submit">
   </form>

@@ -154,4 +154,32 @@ class PostController extends Controller
        
         return redirect('posts/view/'.$request->id);
     }
+
+    public function delete(Request $request)
+    {
+        try{
+
+            $post = $this->client->request('DELETE',env('MICRO_SERVICE_URL').'posts/delete/'.$request->id, [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'token' => [Auth::user()->api_token],
+                    'is_admin' => Auth::user()->is_admin
+                ]
+            ]);
+
+            
+            if($post->getStatusCode()=="204"){
+
+                $decodedPost = json_decode($post->getBody(),true);
+                $decodedPost = $decodedPost['message'];
+            }
+
+        }
+        catch(\Exception $e)
+        {
+            $decodedPost = $e->getMessage();
+        }
+
+       return redirect()->back()->with('message',$decodedPost);
+    }
 }

@@ -59,7 +59,8 @@ class UserController extends Controller
             $decodedUser = $e->getMessage();
         }
 
-       
         return view('users.single')->with('user',$decodedUser);
     }
+
+    
 }

@@ -1,13 +1,20 @@
 @extends('blank')
 @section('content')
 
+@if(session()->has('message'))
+<div class="alert alert-success">
+    {{ session()->get('message') }}
+</div>
+@endif
+
 <a href="{{ url('posts/add') }}"><button class="btn btn-danger">Add</button></a>
 @if(gettype($posts)=="array")
 
 @foreach($posts as $post)
 <hr>
 <div class="header">
-  <h2><a href="{{ url('posts/view',[$post['id']]) }}">{{ $post['title'] }}</a></h2>
+   <a href="{{ url('posts/delete',[$post['id']]) }}" style="text-decoration:none;color:red;"><i class="fa fa-times" aria-hidden="true" style="display:flex;font-size:30px;"></i></a>
+  <h2><a href="{{ url('posts/view',[$post['id']]) }}" style="text-decoration:none;color:white;">{{ $post['title'] }}</a>  </h2>
 </div>
 
 <div class="row">

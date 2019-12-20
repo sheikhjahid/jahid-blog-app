@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('dashboard');
+    return redirect('login');
 });
 
 Route::get('dashboard',"DashboardController@dashboard");
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'posts'], function($app)
     Route::get('edit/{id}',"PostController@edit");
     Route::get('update/{id}',"PostController@update");
 
-   
+    Route::get('delete/{id}', "PostController@delete");
 });
 
 Route::group(['prefix' => 'users'], function($app)
