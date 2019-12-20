@@ -3,7 +3,7 @@
 
 
 
-  <div class="profile" style="background-color:grey;">
+  <div class="profile" style="background-color:grey;height:300px;">
     <center>
     <h2>About Me</h2>
     <h5>Photo of me:</h5>

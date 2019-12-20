@@ -15,29 +15,37 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('dashboard',"DashboardController@dashboard");
-
-Route::group(['prefix' => 'posts'], function($app)
+Route::group(['middleware' => 'auth'], function()
 {
-    Route::get('list',"PostController@index");
-    Route::get('view/{id}', "PostController@view");
 
-    Route::get('add', "PostController@create");
-    Route::get('create', "PostController@store");
-      
-    Route::get('edit/{id}',"PostController@edit");
-    Route::get('update/{id}',"PostController@update");
+    Route::get('dashboard',"DashboardController@dashboard");
 
-    Route::get('delete/{id}', "PostController@delete");
+    Route::group(['prefix' => 'posts'], function($app)
+    {
+        Route::get('list',"PostController@index");
+        Route::get('view/{id}', "PostController@view");
+
+        Route::get('add', "PostController@create");
+        Route::get('create', "PostController@store");
+        
+        Route::get('edit/{id}',"PostController@edit");
+        Route::get('update/{id}',"PostController@update");
+
+        Route::get('delete/{id}', "PostController@delete");
+    });
+
+    Route::group(['prefix' => 'users'], function($app)
+    {
+        Route::get('list',"UserController@index");
+        Route::get('view/{id}', "UserController@view");
+
+        Route::get('delete/{id}',"UserController@delete");
+    });
+
+    Route::get('logout', 'Auth\LoginController@logout');
+
 });
 
-Route::group(['prefix' => 'users'], function($app)
-{
-    Route::get('list',"UserController@index");
-    Route::get('view/{id}', "UserController@view");
-
-    Route::get('delete/{id}',"UserController@delete");
-});
 
 
 Auth::routes();
