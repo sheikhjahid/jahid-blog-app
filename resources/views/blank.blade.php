@@ -6,8 +6,9 @@
     <p>This is my blog</p>
     </div>
     <div class="navbar">
-      <a href="{{ route('register') }}">Sign Up</a>
-      <a href="{{ route('login') }}">Login</a>
+      <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active':'' }}">Dashboard</a>
+      <a href="{{ url('users/list') }}" class="{{ request()->is('users/list') ? 'active':'' }}">Users</a>
+      <a href="{{ url('posts/list') }}" class="{{ request()->is('posts/list') ? 'active':'' }}">Posts</a>
     </div>
   <div class="app" id="app">
 

@@ -2,21 +2,19 @@
 @section('content')
 
 @if(gettype($user)=="array")
+<center>
 
-<div class="row" style="margin-bottom:20px;">
-  <div class="column" style="padding:107px; background-color:grey;border:1px solid;">
-  <div class="profile-data"><img src="{{ URL::asset('images/jahid.jpg') }}"></div>
+  
+  <div class="user-info" style="padding:107px; background-color:grey;border:1px solid; margin-bottom:20px;">
+    <p><b>{{ $user['name'] }}</b></p>
+    <p><b>{{ $user['email'] }}</b></p> 
+    @if($user['is_admin']!=true)
+    <p> <b>{{"Application User"}}</b> </p>
+    @else
+    <p> <b>  {{ "Administrator" }} </b> </p>
+    @endif
   </div>
-  <div class="column" style="padding:107px;">
-        <p> 
-            <b>{{ $user['name'] }}</b> 
-        </p>
-        <p> 
-            <b>{{ $user['email'] }}</b> 
-        </p>
-  </div>
-</div>
-
+</center>
 @else
 <h3>{{ $user }}</h3>
 @endif

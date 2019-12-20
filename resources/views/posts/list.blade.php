@@ -7,7 +7,7 @@
 @foreach($posts as $post)
 <hr>
 <div class="header">
-  <h2>{{ $post['title'] }}</h2>
+  <h2><a href="{{ url('posts/view',[$post['id']]) }}">{{ $post['title'] }}</a></h2>
 </div>
 
 <div class="row">

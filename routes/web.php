@@ -20,8 +20,14 @@ Route::get('dashboard',"DashboardController@dashboard");
 Route::group(['prefix' => 'posts'], function($app)
 {
     Route::get('list',"PostController@index");
+    Route::get('view/{id}', "PostController@view");
+
     Route::get('add', "PostController@create");
     Route::get('create', "PostController@store");
+      
+    Route::get('edit/{id}',"PostController@edit");
+    Route::get('update/{id}',"PostController@update");
+
    
 });
 
