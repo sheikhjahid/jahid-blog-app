@@ -20,7 +20,7 @@ class UserController extends Controller
             $users = $this->client->request("GET", env("MICRO_SERVICE_URL")."users/list", [
                 'headers' => [
                     'Accept' => 'application/json',
-                    'token' => [Auth::user()->api_token]
+                    'token' => [Auth::user()->api_token],
                 ]
             ]);
 
@@ -70,8 +70,8 @@ class UserController extends Controller
                 
                 'headers' => [
                     'Accept' => 'application/json',
-                    // 'token' => [Auth::user()->api_token],
-                    // 'is_admin' => Auth::user()->is_admin
+                    'token' => [Auth::user()->api_token],
+                    'is_admin' => Auth::user()->is_admin
                 ]
             ]);
 
