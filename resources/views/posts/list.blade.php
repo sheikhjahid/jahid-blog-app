@@ -14,8 +14,7 @@
     <div class="leftcolumn">
         <div class="card">
         <h5>{{ date('F jS Y', strtotime($post['created_at'])) }}</h5>
-        <p>Description</p>
-        <p><h2>{{ $post['body'] }}</h2></p>
+        <p><h2>{{ str_limit($post['body'],20) }}</h2></p>
         </div>
     </div>
 </div>

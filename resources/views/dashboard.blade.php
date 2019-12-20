@@ -30,9 +30,9 @@
     <div class="post-content" style="margin-top:20px;">
     <div class="column" style="border: 1px solid cyan; margin-right:20px; margin-bottom:20px;">
     <div class="card box bg-white shadow">
-    <a href="#" style="text-decoration: none;">
+    <a href="{{ url('posts/view',[$post['id']]) }}" style="text-decoration: none;">
     <h3 class="project-title">{{ $post['title']}}</h3></a> 
-    <div style="color: grey;">{{ $post['body'] }}</div></div>
+    <div style="color: grey;">{{ str_limit($post['body'],20) }}</div></div>
     </div>
     </div>
     @endforeach
@@ -52,7 +52,7 @@
   @endif
   </h1>
   <a style="display:flex;" href="{{ url('users/list') }}">See all</a>
-  <h3>Showing latest 4 posts</h3>
+  <h3>Showing latest 4 users</h3>
   <hr>
     @if(gettype($users)=="array")
     @foreach(array_slice($users, 0, 4, true) as $user)
