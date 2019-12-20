@@ -36,4 +36,30 @@ class UserController extends Controller
       
        return view('users.list')->with('users', $decodedUsers);
     }
+
+    public function view(Request $request)
+    {
+        try{
+
+            $user = $this->client->request('GET',env('MICRO_SERVICE_URL').'users/view/'.$request->id, [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'token' => [Auth::user()->api_token]
+                ]
+            ]);
+
+            if($user->getStatusCode()=="200")
+            {
+                $decodedUser = json_decode($user->getBody(),true);
+            }
+
+        }
+        catch(\Exception $e)
+        {
+            $decodedUser = $e->getMessage();
+        }
+
+       
+        return view('users.single')->with('user',$decodedUser);
+    }
 }

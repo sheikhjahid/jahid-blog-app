@@ -1,8 +1,13 @@
 @extends('blank')
 @section('content')
 
-<h3>Post Information</h3>
+@if(session()->has('error'))
+<div class="alert alert-success">
+    {{ session()->get('error') }}
+</div>
+@endif
 
+<h3>Post Information</h3>
 <div class="container">
   <form action="{{ url('posts/create') }}" method="POST" style="margin-bottom:20px;">
     @method('GET')

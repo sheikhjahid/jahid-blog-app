@@ -52,7 +52,7 @@ class PostController extends Controller
                 'headers' => [
                     'Accept' => 'appication/json',
                     'token' => [Auth::user()->api_token],
-                    'is_admin' => true
+                    'is_admin' => Auth::user()->is_admin
                 ],
                 'form_params' => [
                     'title' => $request->title,
@@ -70,6 +70,8 @@ class PostController extends Controller
         catch(\Exception $e)
         {
             $decodedPosts = $e->getMessage();
+
+            return redirect()->back()->with('error',$decodedPosts);
         }
        
        

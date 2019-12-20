@@ -5,7 +5,7 @@
 @foreach($users as $user)
 <hr>
 <div class="header">
-  <h2>{{ $user['name'] }}</h2>
+  <h2><a href="{{ url('users/view',[$user['id']]) }}">{{ $user['name'] }}</a></h2>
 </div>
 
 @endforeach
