@@ -14,7 +14,7 @@
 <hr>
 <div class="header">
    <a href="{{ url('posts/delete',[$post['id']]) }}" style="text-decoration:none;color:red;"><i class="fa fa-times" aria-hidden="true" style="display:flex;font-size:30px;"></i></a>
-  <h2><a href="{{ url('posts/view',[$post['id']]) }}" style="text-decoration:none;color:white;">{{ $post['title'] }}</a>  </h2>
+  <h2><a href="{{ url('posts/view',[$post['id']]) }}" style="text-decoration:none;color:white;">{{ $post['title'] }}</a>  <span class="badge"><i class="fa fa-eye"></i> {{ $post['views'] }}</span></h2>
 </div>
 
 <div class="row">
