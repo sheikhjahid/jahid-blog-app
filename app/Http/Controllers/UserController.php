@@ -62,5 +62,33 @@ class UserController extends Controller
         return view('users.single')->with('user',$decodedUser);
     }
 
-    
+    public function delete(Request $request)
+    {
+        try{
+
+            $user = $this->client->request('DELETE',env('MICRO_SERVICE_URL').'users/delete/'.$request->id,[
+                
+                'headers' => [
+                    'Accept' => 'application/json',
+                    // 'token' => [Auth::user()->api_token],
+                    // 'is_admin' => Auth::user()->is_admin
+                ]
+            ]);
+
+            if($user->getStatusCode()=="204")
+            {
+                $decodedUser = json_decode($user->getBody(),true);
+                $decodedUser = $decodedUser['message'];
+            }
+
+        }
+        catch(\Exception $e)
+        {
+            $decodedUser = $e->getMessage();  
+        }
+
+        return redirect()->back()->with('message',$decodedUser);
+    }
+
+
 }

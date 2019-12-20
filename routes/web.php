@@ -35,9 +35,14 @@ Route::group(['prefix' => 'users'], function($app)
 {
     Route::get('list',"UserController@index");
     Route::get('view/{id}', "UserController@view");
+
+    Route::get('delete/{id}',"UserController@delete");
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function()
+{
+    return redirect('dashboard');
+});

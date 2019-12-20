@@ -3,7 +3,7 @@
 
 
 
-  <div class="profile">
+  <div class="profile" style="background-color:grey;">
     <center>
     <h2>About Me</h2>
     <h5>Photo of me:</h5>
@@ -12,7 +12,6 @@
     </center>
   </div>
   
-  <hr>
   
   <div class="main">
   <h1> Posts 
@@ -20,13 +19,12 @@
   <span class="badge">{{ count($posts) }}</span>
   @endif
   </h1><a style="display:flex;" href="{{ url('posts/list') }}">See all</a>
-  <h3>Showing latest 4 posts</h3>
   <hr>
   <div class="row">
 
     @if(gettype($posts)=="array")
 
-    @foreach(array_slice($posts, 0, 4, true) as $post)
+    @foreach($posts as $post)
     <div class="post-content" style="margin-top:20px;">
     <div class="column" style="border: 1px solid cyan; margin-right:20px; margin-bottom:20px;">
     <div class="card box bg-white shadow">
@@ -52,10 +50,9 @@
   @endif
   </h1>
   <a style="display:flex;" href="{{ url('users/list') }}">See all</a>
-  <h3>Showing latest 4 users</h3>
   <hr>
     @if(gettype($users)=="array")
-    @foreach(array_slice($users, 0, 4, true) as $user)
+    @foreach($users as $user)
     <div class="post-data">
     <h5>{{ $user['name']}}</h5>
     </div>
